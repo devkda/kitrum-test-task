@@ -6,8 +6,14 @@ from salescalc.usecases import (
 
 def test_calculate_total_sales(tmp_csv):
     result = calculate_total_sales(tmp_csv)
-    assert result.sales['Boston'] == 12
-    assert result.sales['New-York'] == 6
+    assert result.sales['Boston'] == 10
+    assert result.sales['New-York'] == 20
+
+
+def test_calculate_total_sales_workers(tmp_csv):
+    result = calculate_total_sales(tmp_csv, 4)
+    assert result.sales['Boston'] == 10
+    assert result.sales['New-York'] == 20
 
 
 def test_save_sales_to_csv(tmp_salesmap, tmp_path):
