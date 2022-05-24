@@ -4,9 +4,11 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
+pydantic = "==1.9.1"
+typer = "==0.4.1"
+prettytable = "==3.3.0"
 pandas = "==1.4.2"
 pytest = "==7.1.2"
-pydantic = "==1.9.1"
 
 [dev-packages]
 

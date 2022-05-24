@@ -1,17 +1,17 @@
+from pathlib import Path
 from typing import Iterable, List
 
-from src.entities import Entry, Entries
-from src.settings import settings
+from salescalc.entities import Entry, Entries
+from salescalc.settings import settings
 
 
-def chunked_entries_generator(filepath: str, chunk_size: int) -> Iterable[Entries]:
+def chunked_entries_generator(filepath: Path, chunk_size: int) -> Iterable[Entries]:
     """Generator that yields serialized Entries objects with size of chunks.
 
     :param filepath: full path to csv file to read
     :param chunk_size: size of chunks to read per iteration
     :return: iterable with <Entries> objects
     """
-
     with open(filepath) as content:
         rows = content.readlines(chunk_size)
         while rows:
@@ -20,7 +20,7 @@ def chunked_entries_generator(filepath: str, chunk_size: int) -> Iterable[Entrie
             rows = content.readlines(chunk_size)
 
 
-def _parse_entries(lines: List) -> Entries:
+def _parse_entries(lines: List[str]) -> Entries:
     """Parses each line as <Entry> objects.
 
     :param lines: list of strings from csv file

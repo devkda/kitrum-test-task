@@ -3,17 +3,8 @@
 # todo:
 - cli script to process input csv
 - parallelism option with cli arguments for setting worker numbers
+- add docs
 
-
-
-# impl. plan
-- define problemset reqs., propose initial solution.
-- whiteboard solution
-- define interfaces, DTOs
-- implement solution
-- refactoring, optimization
-- parallelism
-- make cli interface
 
 
 

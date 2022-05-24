@@ -1,5 +1,4 @@
-from collections import defaultdict
-from typing import List, Dict
+from typing import List
 from datetime import date
 
 from pydantic import BaseModel
