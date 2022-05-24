@@ -4,6 +4,7 @@
 - cli script to process input csv
 - parallelism option with cli arguments for setting worker numbers
 - add docs
+- add tests
 
 
 
@@ -40,7 +41,7 @@ def get_total_sales(filepath: str) -> pd.DataFrame:
     """Counts total sales.
 
     :param filepath: full path to csv file with sale entries
-    :return: :class: <pandas.DataFrame> total sales per city
+    :return: :class: <pandas.DataFrame> total sales per department
     """
     sales = pd.DataFrame()
     with pd.read_csv(filepath, chunksize=settings.chunk_size) as reader:

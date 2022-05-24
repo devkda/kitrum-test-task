@@ -1,3 +1,6 @@
+"""
+This module contains package-wide helper functions.
+"""
 import uuid
 
 

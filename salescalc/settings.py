@@ -1,3 +1,7 @@
+"""
+This module contains settings management used in different parts of application.
+Parameters also can be loaded from environment variables.
+"""
 import os
 
 from pydantic import BaseSettings, Field

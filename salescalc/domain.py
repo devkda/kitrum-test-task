@@ -1,16 +1,30 @@
+"""
+This module contains the domain logic.
+"""
 from __future__ import annotations
 from collections import defaultdict
 
 from prettytable import PrettyTable
 
-from salescalc.entities import Entries, Entry
+from salescalc.structures import Entries, Entry
 
 
 class SalesMap:
-    """Representation of total sales table for each city.
+    """Representation of total sales data of all the departments.
+
+    Sales data is stored in dictionary, where the keys are department names and
+    values are total salaes of dept.
+
+    Example::
+        {
+            'New-York': 123,
+            'Boston': 456,
+        }
+
     Supports addition between instances with arithmetic operator.
-    Ex: 
-        SalesMap() + SalesMap()
+
+    Example::
+      >>> SalesMap() + SalesMap()
     """
 
     __slots__ = ['sales']
@@ -18,6 +32,7 @@ class SalesMap:
 
     def __init__(self, entries: Entries = None):
         """
+        :param entries: list of <Entries> to evaluate and store in current instance.
         """
         self.sales = defaultdict(int)
 
@@ -27,26 +42,52 @@ class SalesMap:
 
     def add_entry(self, entry: Entry):
         """
+        :param entry: single sales <Entry> to add for corresponding department.
         """
-        self.sales[entry.city] += entry.sales
+        self.sales[entry.department] += entry.sales
 
     def __add__(self, other: SalesMap):
-        """
+        """Dunder method to add SalesMap objects.
+        Makes the union of keys from both SalesMap objects and
+        stores sum of sales count from both objects.
+
+        :param other: SalesMap object to add
         """
         new_map = SalesMap()
         cities = set(self.sales.keys()).union(other.sales.keys())
-        for city in cities:
-            new_map.sales[city] += self.sales[city] + other.sales[city]
+
+        for department in cities:
+            new_map.sales[department] += self.sales[department] + other.sales[department]
+
         return new_map
 
     def values_as_list(self):
-        return [(city, sales) for city, sales in self.sales.items()]
+        """Returns the sales data as a list, consisting of pairs (department, sales_count).
+
+        Example::
+            [
+                ('New-York', 123),
+                ('Boston', 456),
+            ]
+        """
+        return [(department, sales) for department, sales in self.sales.items()]
 
     def __str__(self):
+        """Returns the string representation of sales data as a
+        table with pretty layout.
+
+        Example::
+            +-----------------+-------+
+            | Department Name | Sales |
+            +-----------------+-------+
+            |     New-York    |  123  |
+            |      Boston     |  456  |
+            +-----------------+-------+
+        """        
         table = PrettyTable()
         table.field_names = self.field_names
 
-        for city, sales in self.sales.items():
-            table.add_row([city, sales])
+        for department, sales in self.sales.items():
+            table.add_row([department, sales])
 
         return str(table)

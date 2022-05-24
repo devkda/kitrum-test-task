@@ -1,16 +1,23 @@
+"""
+This module contains the functions that loads objects as domain objects
+from input files.
+
+Supported formats:
+    - csv
+"""
 from pathlib import Path
 from typing import Iterable, List
 
-from salescalc.entities import Entry, Entries
+from salescalc.structures import Entry, Entries
 from salescalc.settings import settings
 
 
 def chunked_entries_generator(filepath: Path, chunk_size: int) -> Iterable[Entries]:
-    """Generator that yields serialized Entries objects with size of chunks.
+    """Generator that yields serialized <Entries> objects with size of chunks.
 
     :param filepath: full path to csv file to read
-    :param chunk_size: size of chunks to read per iteration
-    :return: iterable with <Entries> objects
+    :param chunk_size: size of chunks to read per generation
+    :return: iterable of <Entries> objects
     """
     with open(filepath) as content:
         rows = content.readlines(chunk_size)
@@ -21,7 +28,7 @@ def chunked_entries_generator(filepath: Path, chunk_size: int) -> Iterable[Entri
 
 
 def _parse_entries(lines: List[str]) -> Entries:
-    """Parses each line as <Entry> objects.
+    """Parses csv lines as <Entries> objects.
 
     :param lines: list of strings from csv file
     :return: <Entries> object
@@ -42,7 +49,7 @@ def _parse_entry(line: str) -> Entry:
     """
     row = line[:-1].split(settings.csv_delimiter)
     return Entry(
-        city=row[0],
+        department=row[0],
         date=row[1],
         sales=row[2],
     )

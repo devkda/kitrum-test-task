@@ -1,3 +1,6 @@
+"""
+This module contains the command line interface to perform calculations on sales data.
+"""
 from typing import Optional
 from pathlib import Path
 
@@ -12,11 +15,12 @@ cliapp = typer.Typer()
 
 
 @cliapp.command()
-def calc(
+def calculate(
     src: Path, 
     dest: Optional[Path] = typer.Option(None), 
     workers: Optional[int] = typer.Option(settings.workers)
 ):
+    """Command line interface for salescalc."""
     if dest is None:
         dest = short_random_string() + '_' + src.name
 
