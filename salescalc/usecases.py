@@ -1,5 +1,5 @@
 """
-This module contains api to perform calculations on csv files with sales data.
+This module contains the api to perform calculations on csv files with sales data.
 """
 
 import csv
@@ -35,7 +35,7 @@ def calculate_total_sales(filepath: Path, workers: int=settings.workers) -> Sale
 def save_sales_to_csv(salesmap: SalesMap, dest: Path):
     """Saves salesmap data as csv to file.
 
-    :param salesmap: SalesMap object with data
+    :param salesmap: <SalesMap> object with data
     :param dest: destination path to save
     :return:
     """

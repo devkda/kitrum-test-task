@@ -5,6 +5,7 @@ from input files.
 Supported formats:
     - csv
 """
+
 from pathlib import Path
 from typing import Iterable, List
 

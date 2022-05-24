@@ -1,0 +1,9 @@
+[tool.pytest.ini_options]
+addopts = "-svp no:warnings"
+testpaths = [
+    "tests",
+    "salescalc",
+]
+pythonpath = [
+  "."
+]

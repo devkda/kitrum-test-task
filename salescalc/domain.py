@@ -1,6 +1,7 @@
 """
 This module contains the domain logic.
 """
+
 from __future__ import annotations
 from collections import defaultdict
 
@@ -83,7 +84,7 @@ class SalesMap:
             |     New-York    |  123  |
             |      Boston     |  456  |
             +-----------------+-------+
-        """        
+        """
         table = PrettyTable()
         table.field_names = self.field_names
 

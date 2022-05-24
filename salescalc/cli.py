@@ -1,6 +1,7 @@
 """
 This module contains the command line interface to perform calculations on sales data.
 """
+
 from typing import Optional
 from pathlib import Path
 

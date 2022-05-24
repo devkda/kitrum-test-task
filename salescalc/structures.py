@@ -3,7 +3,6 @@ This module contains the data transfering objects with
 type validation that represents the domain objects.
 """
 
-
 from typing import List
 from datetime import date
 
