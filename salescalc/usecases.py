@@ -12,22 +12,17 @@ from salescalc.domain import SalesMap
 from salescalc.loaders import chunked_entries_generator
 
 
-def calculate_total_sales(filepath: Path, workers: int=settings.workers) -> SalesMap:
+def calculate_total_sales(filepath: Path) -> SalesMap:
     """Counts total sales.
-    Can perform calculations in parallel according to amount of workers.
 
     :param filepath: full path to csv file with sale entries
-    :param workers: workers count to run in parallel
     :return: <SalesMap> mapping with total sales per each department
     """
     entry_chunks = chunked_entries_generator(filepath, settings.chunk_size)
     total_sales = SalesMap()
 
-    with Pool(max_workers=workers) as pool:
-        results = pool.map(SalesMap, entry_chunks)
-
-    for salesmap in results:
-        total_sales += salesmap
+    for entries in entry_chunks:
+        total_sales += SalesMap(entries)
 
     return total_sales
 

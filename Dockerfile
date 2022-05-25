@@ -31,4 +31,5 @@ USER appuser
 
 COPY . .
 
-ENTRYPOINT ["python"]
+ENTRYPOINT ["python", "-m", "salescalc"]
+CMD [ "--help" ]

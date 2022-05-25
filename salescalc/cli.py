@@ -18,15 +18,14 @@ cliapp = typer.Typer()
 @cliapp.command()
 def calculate(
     src: Path, 
-    dest: Optional[Path] = typer.Option(None), 
-    workers: Optional[int] = typer.Option(settings.workers)
+    dest: Optional[Path] = typer.Option(None)
 ):
     """Command line interface for salescalc."""
     if dest is None:
         dest = short_random_string() + '_' + src.name
 
-    typer.echo(f"Calculating sales from file: {src}, using {workers} workers.")
-    result = calculate_total_sales(src, workers)
+    typer.echo(f"Calculating sales from file: {src}")
+    result = calculate_total_sales(src)
 
     save_sales_to_csv(result, dest)
     typer.echo(f"Saved results to file: {dest}")
