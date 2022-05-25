@@ -42,10 +42,17 @@ class SalesMap:
                 self.add_entry(entry)
 
     def add_entry(self, entry: Entry):
-        """
+        """Adds single sales entry to current instance.
         :param entry: single sales <Entry> to add for corresponding department.
         """
         self.sales[entry.department] += entry.sales
+
+    def add_entries(self, entries: Entries):
+        """Adds all the sales entries to current instance.
+        :param entries: sales <Entries> to add for corresponding department.
+        """
+        for entry in entries.data:
+            self.add_entry(entry)
 
     def __add__(self, other: SalesMap):
         """Dunder method to add SalesMap objects.

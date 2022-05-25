@@ -5,8 +5,6 @@ This module contains the api to perform calculations on csv files with sales dat
 import csv
 from pathlib import Path
 
-from concurrent.futures import ProcessPoolExecutor as Pool
-
 from salescalc.settings import settings
 from salescalc.domain import SalesMap
 from salescalc.loaders import chunked_entries_generator
@@ -22,7 +20,7 @@ def calculate_total_sales(filepath: Path) -> SalesMap:
     total_sales = SalesMap()
 
     for entries in entry_chunks:
-        total_sales += SalesMap(entries)
+        total_sales.add_entries(entries)
 
     return total_sales
 

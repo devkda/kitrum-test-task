@@ -17,10 +17,15 @@ cliapp = typer.Typer()
 
 @cliapp.command()
 def calculate(
-    src: Path, 
-    dest: Optional[Path] = typer.Option(None)
+    src: Path = typer.Option(None, help='absolute path of input file'),
+    dest: Optional[Path] = typer.Option(None, help='absolute path of output file')
 ):
     """Command line interface for salescalc."""
+
+    if src is None:
+        typer.echo('Please provide a path for input data.')
+        raise typer.Exit(code=1)
+
     if dest is None:
         dest = short_random_string() + '_' + src.name
 

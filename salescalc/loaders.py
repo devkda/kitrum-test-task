@@ -21,6 +21,7 @@ def chunked_entries_generator(filepath: Path, chunk_size: int) -> Iterable[Entri
     :return: iterable of <Entries> objects
     """
     with open(filepath) as content:
+        next(content)  # skipping header line
         rows = content.readlines(chunk_size)
         while rows:
             entries = _parse_entries(rows)
@@ -34,8 +35,6 @@ def _parse_entries(lines: List[str]) -> Entries:
     :param lines: list of strings from csv file
     :return: <Entries> object
     """
-    if settings.csv_header_part in lines[0]: # skipping header
-        lines = lines[1:]
 
     return [
         _parse_entry(line) for line in lines
