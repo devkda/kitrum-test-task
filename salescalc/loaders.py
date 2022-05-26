@@ -29,7 +29,7 @@ def chunked_entries_generator(filepath: Path, chunk_size: int) -> Iterable[Entri
             rows = content.readlines(chunk_size)
 
 
-def _parse_entries(lines: List[str]) -> Entries:
+def _parse_entries(lines: List[str]) -> List[Entry]:
     """Parses csv lines as <Entries> objects.
 
     :param lines: list of strings from csv file

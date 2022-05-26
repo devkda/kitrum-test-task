@@ -21,11 +21,11 @@ Options:
 Examples:
 
 ```bash
-$ pythom cli.py --src data/input.csv --dest data/results.csv
+$ python cli.py --src data/input.csv --dest data/results.csv
 ```
 or
 ```
-$ pythom -m salescalc --src data/input.csv --dest data/results.csv
+$ python -m salescalc --src data/input.csv --dest data/results.csv
 ```
 
 
@@ -46,7 +46,7 @@ $ pytest
 ## algorithm description
 #### TLDR;
 
-- Time complexity: O(n), where `n` is the totol number of lines(entries) in csv.
+- Time complexity: O(n), where `n` is the total number of lines(entries) in csv.
 - Space complexity: O(m) where `m` is the total number of departments.
 
 The main logic is powered by `SalesMap` data structure and `salescalc.usecases.calculate_total_sales` function.
