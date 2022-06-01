@@ -9,8 +9,8 @@ Supported formats:
 from pathlib import Path
 from typing import Iterable, List
 
-from salescalc.structures import Entry, Entries
-from salescalc.settings import settings
+from .structures import Entry, Entries
+from .settings import settings
 
 
 def chunked_entries_generator(filepath: Path, chunk_size: int) -> Iterable[Entries]:

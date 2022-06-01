@@ -7,7 +7,7 @@ from collections import defaultdict
 
 from prettytable import PrettyTable
 
-from salescalc.structures import Entries, Entry
+from .structures import Entries, Entry
 
 
 class SalesMap:
@@ -31,7 +31,7 @@ class SalesMap:
     __slots__ = ['sales']
     field_names = ['Department Name', 'Sales']  # key, value labels
 
-    def __init__(self, entries: Entries = None):
+    def __init__(self, entries: Entries | None = None):
         """
         :param entries: list of <Entries> to evaluate and store in current instance.
         """
@@ -54,7 +54,7 @@ class SalesMap:
         for entry in entries.data:
             self.add_entry(entry)
 
-    def __add__(self, other: SalesMap):
+    def __add__(self, other: SalesMap) -> SalesMap:
         """Dunder method to add SalesMap objects.
         Makes the union of keys from both SalesMap objects and
         stores sum of sales count from both objects.

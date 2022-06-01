@@ -3,7 +3,6 @@ This module contains the settings management used in different parts of applicat
 Parameters are also can be loaded from environment variables.
 """
 
-import os
 
 from pydantic import BaseSettings, Field
 

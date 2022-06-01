@@ -7,9 +7,9 @@ from pathlib import Path
 
 import typer
 
-from salescalc.usecases import calculate_total_sales, save_sales_to_csv
-from salescalc.utils import short_random_string
-from salescalc.settings import settings
+from .usecases import calculate_total_sales, save_sales_to_csv
+from .utils import short_random_string
+from .settings import settings
 
 
 cliapp = typer.Typer()

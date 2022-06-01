@@ -1,4 +1,4 @@
-from salescalc.cli import cliapp
+from .cli import cliapp
 
 
 if __name__ == "__main__":
